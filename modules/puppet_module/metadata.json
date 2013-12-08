@@ -1,0 +1,56 @@
+{
+  "checksums": {
+    "CONTRIBUTING.md": "7a418d552b231d71f192a782b4267df6",
+    "lib/puppet/provider/module/forge.rb": "7f36061d6d528ed399a49bc167da6bfe",
+    "README.md": "c362b2d26e2a2bddf981261475a0566b",
+    "lib/puppet/type/module.rb": "01907cd622e4eeae72eae2695a7a7c75",
+    "Modulefile": "e188dfb4cd23ef34eee9875ab369094e"
+  },
+  "description": "Manage Puppet Forge modules as Puppet resources with this module",
+  "summary": "puppet_module type and provider for managing puppet modules as resources",
+  "dependencies": [
+
+  ],
+  "author": "pvande / Puppet Labs",
+  "version": "0.0.3",
+  "types": [
+    {
+      "parameters": [
+        {
+          "doc": "",
+          "name": "name"
+        },
+        {
+          "doc": "",
+          "name": "version"
+        },
+        {
+          "doc": "",
+          "name": "modulepath"
+        },
+        {
+          "doc": "",
+          "name": "source"
+        }
+      ],
+      "providers": [
+        {
+          "doc": "A Forge provider for Puppet Modules",
+          "name": "forge"
+        }
+      ],
+      "properties": [
+        {
+          "doc": "  Valid values are `present`, `absent`, `latest`.  Values can match `/./`.",
+          "name": "ensure"
+        }
+      ],
+      "doc": "",
+      "name": "module"
+    }
+  ],
+  "source": "git@github.com:rcoleman/puppet_module_provider.git",
+  "license": "Apache License 2.0",
+  "name": "rcoleman-puppet_module",
+  "project_page": "https://github.com/rcoleman/puppet_module_provider"
+}
