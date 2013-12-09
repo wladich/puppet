@@ -8,6 +8,7 @@ Exec {
 class { "ssh::server":
   permit_root_login => 'yes',
   allowed_users => ["w", "root"],
+  password_authentication => yes
 }
 
 class { 'sudo': }
