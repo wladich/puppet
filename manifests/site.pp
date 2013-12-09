@@ -29,3 +29,24 @@ postgresql::server::pg_hba_rule { 'local access as postgres user':
   auth_method => 'ident',
   order       => '001',
 }
+
+group { 'osm': 
+    ensure => present
+}
+
+file { 'osm_home': 
+    ensure => 'directory',
+    path => '/home/osm',
+    owner => 'osm',
+    group => 'osm',
+    mode => 700,
+    require => User['osm'] }
+
+user { 'osm': 
+    shell => '/bin/false',
+    managehome => no,
+    home => '/home/osm',
+    gid => 'osm',
+    require => Group['osm']
+}
+
