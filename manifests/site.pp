@@ -1,4 +1,5 @@
 import 'users.pp'
+import 'utilities.pp'
 
 Exec { 
       path => '/usr/bin:/bin:/usr/sbin:/sbin',
