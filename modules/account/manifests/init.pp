@@ -94,7 +94,7 @@ define account(
   $username = $title, $password = '!', $shell = '/bin/bash', $manage_home = true,
   $home_dir = undef, $create_group = true, $system = false, $uid = undef,
   $ssh_key = undef, $ssh_key_type = 'ssh-rsa', $groups = [], $ensure = present,
-  $comment= "$title Puppet-managed User", $gid = 'users', $membership=inclusive
+  $comment= "$title Puppet-managed User", $gid = 'users'
 ) {
 
   if $home_dir == undef {
@@ -159,7 +159,7 @@ define account(
       home       => $home_dir_real,
       managehome => $manage_home,
       system     => $system,
-      membership => $membership,
+      membership => inclusive,
   }
 
   file {
@@ -168,7 +168,7 @@ define account(
       path    => $home_dir_real,
       owner   => $dir_owner,
       group   => $dir_group,
-      mode    => 0750;
+      mode    => 0700;
 
     "${title}_sshdir":
       ensure  => $dir_ensure,
