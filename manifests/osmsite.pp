@@ -46,4 +46,11 @@ class osm_site {
         gid => 'osm',
         require => Group['osm']
     }
+
+    package { 'ruby1.9.1': }
+    package { 'bundle':
+      ensure => present,
+      provider => gem,
+    }
+
 }
