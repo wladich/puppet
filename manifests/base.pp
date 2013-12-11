@@ -14,3 +14,5 @@ class { 'timezone':
     timezone => 'Europe/Moscow',
     autoupgrade => true
 }
+
+include locales
