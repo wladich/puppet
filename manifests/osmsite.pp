@@ -19,6 +19,14 @@ class osm_site {
       order       => '002',
     }
     
+    postgresql::server::role { "osm": }
+    postgresql::server::database { "osm":
+        owner => "osm",
+        encoding => "UTF-8",
+        locale =>  "en_US.UTF-8",
+        require => Postgresql::Server::Role["osm"]
+    }
+
     group { 'osm': 
         ensure => present
     }
