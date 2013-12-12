@@ -168,7 +168,16 @@ class osm_site {
                     Class['osm_pg_db'], Class['update_gems']]
     } 
     class {'update_osm_assets':
-        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config']]
+        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], Class['update_gems']]
+    }
+
+    file { '/var/log/osm': 
+        ensure => 'directory',
+        owner => 'osm',
+        group => 'osm',
+        mode => 750,
+        require => Class['osm_user'],
+        before => Vcsrepo['osm']
     }
 
 }

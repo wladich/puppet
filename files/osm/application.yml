@@ -65,7 +65,7 @@ production: &defaults
   # Location of data for attachments
   attachments_dir: ":rails_root/public/attachments"
   # Log file to use
-  #log_path: ""
+  log_path: "/var/log/osm/rails.log"
   # List of memcache servers to use for caching
   #memcache_servers: []
   # Enable legacy OAuth 1.0 support
