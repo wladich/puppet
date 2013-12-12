@@ -1,4 +1,62 @@
-class osm_site {
+class pkg_build-essential {package {'build-essential':}}
+class pkg_ruby191 {package { 'ruby1.9.1': }}
+class gem_bundle { package { 'bundle': ensure => present, provider => gem}}
+
+
+class osm_pgfuncs_build_deps {
+    include pkg_build-essential
+    package {'postgresql-server-dev-all':}
+}
+
+class osm_gems_build_deps {
+    include pkg_build-essential
+    include pkg_ruby191
+    include gem_bundle
+    package {'ruby1.9.1-dev':}
+    package {'zlib1g-dev':}
+    package {'libxml2-dev':}
+    package {'libpq-dev':}
+}
+
+class osm_site_deps {
+    include pkg_ruby191
+    include gem_bundle
+}
+
+class osm_site_config {
+    file {'/home/osm/site/config/application.yml':
+        source => "puppet:///files/osm/application.yml",
+    }
+    file {'/home/osm/site/config/database.yml':
+        source => "puppet:///files/osm/database.yml",
+    }
+}
+
+
+class osm_user {
+    group { 'osm': 
+        ensure => present
+    }
+
+    file { 'osm_home': 
+        ensure => 'directory',
+        path => '/home/osm',
+        owner => 'osm',
+        group => 'osm',
+        mode => 700,
+        require => User['osm'] }
+
+    user { 'osm': 
+        shell => '/bin/false',
+        managehome => no,
+        home => '/home/osm',
+        gid => 'osm',
+        require => Group['osm']
+    }
+}
+
+
+class osm_pg_db {
     class { 'postgresql::server': 
         pg_hba_conf_defaults => false
     }
@@ -24,33 +82,93 @@ class osm_site {
         owner => "osm",
         encoding => "UTF-8",
         locale =>  "en_US.UTF-8",
-        require => Postgresql::Server::Role["osm"]
+        require => Postgresql::Server::Role["osm"],
+    }
+    exec {'btree extension for osm database':
+        user => 'postgres',
+        refreshonly => true,
+        subscribe => Postgresql::Server::Database["osm"],
+        command => 'psql -d osm -c "CREATE EXTENSION btree_gist"'
+    }
+}
+
+class update_pg_functions {
+    include osm_pgfuncs_build_deps
+    exec { 'build lib': 
+        cwd => '/home/osm/site/db/functions',
+        command => "make libpgosm.so && mv libpgosm.so /opt && chmod 644 /opt/libpgosm.so",
+        require => Class['osm_pgfuncs_build_deps']
     }
 
-    group { 'osm': 
-        ensure => present
+    exec { 'create pg functions':
+        user => 'postgres',
+        require => Exec['build lib'],
+        command => "psql -d osm -c \"
+            CREATE OR REPLACE FUNCTION maptile_for_point(int8, int8, int4) RETURNS int4 AS '/opt/libpgosm', 'maptile_for_point' LANGUAGE C STRICT;
+            CREATE OR REPLACE FUNCTION tile_for_point(int4, int4) RETURNS int8 AS '/opt/libpgosm', 'tile_for_point' LANGUAGE C STRICT;
+            CREATE OR REPLACE FUNCTION xid_to_int4(xid) RETURNS int4 AS '/opt/libpgosm', 'xid_to_int4' LANGUAGE C STRICT;\""
+    }
+}
+
+class update_gems {
+    include osm_gems_build_deps
+    exec { 'install gems': 
+        require => Class['osm_gems_build_deps'],
+        cwd => "/home/osm/site",
+        timeout => 1000,
+        command => "/usr/local/bin/bundle install --deployment"
+    }
+}
+
+class update_db_schema {
+    exec { 'update_db_schema': 
+        user => 'osm',
+        cwd => "/home/osm/site",
+        environment => ["RAILS_ENV=production",  "DB_STRUCTURE=/dev/null"],
+        command => "/usr/local/bin/bundle exec rake db:migrate"
+    }
+}
+
+class update_osm_assets {
+    exec {'update_osm_assets':
+        environment => ["RAILS_ENV=production"],
+        cwd => "/home/osm/site",
+        command => "/usr/local/bin/bundle exec rake assets:precompile"
+    }    
+}
+
+class osm_site {
+    include osm_site_deps
+    include osm_user
+    include osm_pg_db
+    
+    vcsrepo { 'osm': 
+        path => '/home/osm/site',
+        ensure => latest,
+        provider => git,
+        source => 'https://github.com/openstreetmap/openstreetmap-website.git',
+        revision => 'master',
+        require => Class['osm_user'],
+    }
+    
+    class{ 'update_pg_functions':
+        require => [Vcsrepo['osm'], Class['osm_pg_db']]
+    } 
+
+    class{ 'update_gems':
+        require => [Vcsrepo['osm']]
+    } 
+
+    class {'osm_site_config':
+        require => Vcsrepo['osm']
     }
 
-    file { 'osm_home': 
-        ensure => 'directory',
-        path => '/home/osm',
-        owner => 'osm',
-        group => 'osm',
-        mode => 700,
-        require => User['osm'] }
-
-    user { 'osm': 
-        shell => '/bin/false',
-        managehome => no,
-        home => '/home/osm',
-        gid => 'osm',
-        require => Group['osm']
-    }
-
-    package { 'ruby1.9.1': }
-    package { 'bundle':
-      ensure => present,
-      provider => gem,
+    class{ 'update_db_schema':
+        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], 
+                    Class['osm_pg_db']]
+    } 
+    class {'update_osm_assets':
+        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config']]
     }
 
 }
