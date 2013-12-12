@@ -146,7 +146,7 @@ class osm_site {
         path => '/home/osm/site',
         ensure => latest,
         provider => git,
-        source => 'https://github.com/openstreetmap/openstreetmap-website.git',
+        source => 'https://github.com/wladich/openstreetmap-website.git',
         revision => 'master',
         require => Class['osm_user'],
     }
