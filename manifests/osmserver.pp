@@ -11,7 +11,7 @@ class uwsgi {
 }
 
 class nginx {
-    package {'nginx-full'}
+    package {'nginx-full':}
     service { 'nginx':
         ensure     => running,
         enable     => true,
@@ -24,6 +24,7 @@ class nginx {
 
 class osm_server {
     include uwsgi
+    include nginx
     file {'/etc/uwsgi/apps-enabled/osm.ini':
         mode => 644,
         source => "puppet:///files/osm/uwsgi.config",
