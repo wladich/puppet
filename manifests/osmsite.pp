@@ -97,12 +97,14 @@ class update_pg_functions {
     exec { 'build lib': 
         cwd => '/home/osm/site/db/functions',
         command => "make libpgosm.so && mv libpgosm.so /opt && chmod 644 /opt/libpgosm.so",
-        require => Class['osm_pgfuncs_build_deps']
+        require => Class['osm_pgfuncs_build_deps'],
+        refreshonly => true,
     }
 
     exec { 'create pg functions':
         user => 'postgres',
         require => Exec['build lib'],
+        refreshonly => true,
         command => "psql -d osm -c \"
             CREATE OR REPLACE FUNCTION maptile_for_point(int8, int8, int4) RETURNS int4 AS '/opt/libpgosm', 'maptile_for_point' LANGUAGE C STRICT;
             CREATE OR REPLACE FUNCTION tile_for_point(int4, int4) RETURNS int8 AS '/opt/libpgosm', 'tile_for_point' LANGUAGE C STRICT;
@@ -116,6 +118,7 @@ class update_gems {
         require => Class['osm_gems_build_deps'],
         cwd => "/home/osm/site",
         timeout => 1000,
+        refreshonly => true,
         command => "/usr/local/bin/bundle install --deployment"
     }
 }
@@ -125,15 +128,23 @@ class update_db_schema {
         user => 'osm',
         cwd => "/home/osm/site",
         environment => ["RAILS_ENV=production",  "DB_STRUCTURE=/dev/null"],
+        refreshonly => true,
         command => "/usr/local/bin/bundle exec rake db:migrate"
     }
 }
 
 class update_osm_assets {
+    exec {'cleanup compiled assets':
+        command => '[ -e /home/osm/public/assets ] && rm -r /home/osm/public/assets',
+        refreshonly => true,
+    }
+
     exec {'update_osm_assets':
-        environment => ["RAILS_ENV=production"],
+        environment => "RAILS_ENV=production",
         cwd => "/home/osm/site",
-        command => "/usr/local/bin/bundle exec rake assets:precompile"
+        refreshonly => true,
+        command => "/usr/local/bin/bundle exec rake assets:precompile",
+        require => Exec['cleanup compiled assets']
     }    
 }
 
@@ -149,6 +160,7 @@ class osm_site {
         source => 'https://github.com/wladich/openstreetmap-website.git',
         revision => 'master',
         require => Class['osm_user'],
+        notify => [Class['update_pg_functions'], Class['update_gems'], Class['update_db_schema'], Class['update_osm_assets']]
     }
     
     class{ 'update_pg_functions':
@@ -180,4 +192,5 @@ class osm_site {
         before => Vcsrepo['osm']
     }
 
+   
 }
