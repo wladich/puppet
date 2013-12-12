@@ -165,7 +165,7 @@ class osm_site {
 
     class{ 'update_db_schema':
         require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], 
-                    Class['osm_pg_db']]
+                    Class['osm_pg_db'], Class['update_gems']]
     } 
     class {'update_osm_assets':
         require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config']]
