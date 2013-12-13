@@ -195,6 +195,14 @@ class osm_site {
         require => Class['osm_user'],
         before => Vcsrepo['osm']
     }
+    file { '/var/lib/osm': 
+        ensure => 'directory',
+        owner => 'osm',
+        group => 'osm',
+        mode => 750,
+        require => Class['osm_user'],
+        before => Vcsrepo['osm']
+    }
 
    
 }
