@@ -137,7 +137,8 @@ class update_db_schema {
 
 class update_osm_assets {
     exec {'cleanup compiled assets':
-        command => '[ -e /home/osm/public/assets ] && rm -r /home/osm/public/assets',
+        command => 'rm -r /home/osm/public/assets; fi',
+        onlyif => '[ -e /home/osm/public/assets ]',
         refreshonly => true,
     }
 
