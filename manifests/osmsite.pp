@@ -26,9 +26,11 @@ class osm_site_deps {
 class osm_site_config {
     file {'/home/osm/site/config/application.yml':
         source => "puppet:///files/osm/application.yml",
+        notify => Service['uwsgi']
     }
     file {'/home/osm/site/config/database.yml':
         source => "puppet:///files/osm/database.yml",
+        notify => Service['uwsgi']
     }
 }
 
