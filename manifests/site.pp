@@ -7,3 +7,4 @@ import 'osmserver.pp'
 include user_w
 include osm_site
 include osm_server
+include osmosis
