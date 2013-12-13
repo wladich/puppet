@@ -44,8 +44,8 @@ class osm_user {
         ensure => 'directory',
         path => '/home/osm',
         owner => 'osm',
-        group => 'osm',
-        mode => 700,
+        group => 'www-data',
+        mode => 750,
         require => User['osm'] }
 
     user { 'osm': 
