@@ -35,5 +35,10 @@ class osm_server {
         source => "puppet:///files/osm/nginx.config",
         notify => Service['nginx'],
         }
+    file {'/etc/nginx/sites-enabled/default':
+        ensure => absent,
+        notify => Service['nginx'],
+
+    }
 
 }
