@@ -163,7 +163,8 @@ class osm_site {
         source => 'https://github.com/wladich/openstreetmap-website.git',
         revision => 'master',
         require => Class['osm_user'],
-        notify => [Class['update_pg_functions'], Class['update_gems'], Class['update_db_schema'], Class['update_osm_assets']]
+        notify => [Class['update_pg_functions'], Class['update_gems'], Class['update_db_schema'], 
+                   Class['update_osm_assets'], Service['uwsgi']]
     }
     
     class{ 'update_pg_functions':
