@@ -23,7 +23,7 @@ class osm2pgsql{
         require => File['/opt/osm2pgsql'],
     }
 
-    filr {'/usr/local/bin/osm2pgsql': 
+    file {'/usr/local/bin/osm2pgsql': 
         ensure => link,
         target => '/opt/osm2pgsql/osm2pgsql'
         }
