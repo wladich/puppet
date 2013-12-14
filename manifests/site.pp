@@ -10,3 +10,4 @@ class {'osm_site':
     }
 include osm_server
 include osmosis
+include cgimap
