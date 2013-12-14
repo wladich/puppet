@@ -1,0 +1,31 @@
+function do_build {
+    arch=$1
+    chroot_dir=chroot
+    if [ -e $chroot_dir ]; then
+        echo $chroot_dir exists
+        exit 1
+    fi;
+    mkdir $chroot_dir
+    sudo mount -t tmpfs tmpfs $chroot_dir -o size=1G
+    sudo debootstrap --arch $arch --variant minbase precise $chroot_dir http://mirror.yandex.ru/ubuntu/
+    sudo chroot $chroot_dir bash -c "
+        set -x
+        set -e
+        echo deb http://mirror.yandex.ru/ubuntu precise main universe > /etc/apt/sources.list
+        apt-get update 
+        apt-get install -y $DEPS
+        git clone --depth=1 $GIT /$NAME
+        cd /$NAME
+        git log -n 1 --pretty=format:\"%h %aD\" > /${NAME}-git-revision
+        $BUILD
+    "
+    dest_dir=${NAME}_dist/$arch
+    if [ -e $dest_dir ]; then rm -r $dest_dir; fi
+    mkdir -p $dest_dir
+    for a in $ARTIFACTS; do
+        cp $chroot_dir/${NAME}/$a $dest_dir/
+    done
+    cp $chroot_dir/${NAME}-git-revision $dest_dir/
+    sudo umount $chroot_dir
+    rm -r $chroot_dir
+}
