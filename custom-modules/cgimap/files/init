@@ -1,0 +1,11 @@
+description "cgimap OpenStreetMaps api server"
+start on started rc
+stop on stopping rc
+
+setuid osm
+setgid nogroup
+
+respawn
+respawn limit 10 5
+
+exec /opt/cgimap/map --dbname osm --logfile /var/log/cgimap/cgimap.log --port 18000 --instances 4 --ratelimit 100000 --maxdebt 10
