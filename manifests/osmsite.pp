@@ -23,9 +23,9 @@ class osm_site_deps {
     include gem_bundle
 }
 
-class osm_site_config {
+class osm_site_config ($oauth_consumer_key = "") {
     file {'/home/osm/site/config/application.yml':
-        source => "puppet:///files/osm/application.yml",
+        content => template("application.yml.erb"),
         notify => Service['uwsgi']
     }
     file {'/home/osm/site/config/database.yml':
@@ -78,7 +78,16 @@ class osm_pg_db {
       auth_method => 'ident',
       order       => '002',
     }
-    
+
+    postgresql::server::pg_hba_rule { 'trust access for java clients. FIXME: add password':
+      type        => 'host',
+      address     => '127.0.0.1/32',
+      database    => 'osm',
+      user        => 'osm',
+      auth_method => 'trust',
+      order       => '003',
+    }
+
     postgresql::server::role { "osm": }
     postgresql::server::database { "osm":
         owner => "osm",
@@ -151,7 +160,7 @@ class update_osm_assets {
     }    
 }
 
-class osm_site {
+class osm_site ($oauth_consumer_key = "") {
     include osm_site_deps
     include osm_user
     include osm_pg_db
@@ -176,6 +185,7 @@ class osm_site {
     } 
 
     class {'osm_site_config':
+        oauth_consumer_key => $oauth_consumer_key,
         require => Vcsrepo['osm']
     }
 

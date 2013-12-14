@@ -73,9 +73,9 @@ production: &defaults
   # URL of Nominatim instance to use for geocoding
   nominatim_url: "http://nominatim.openstreetmap.org/"
   # Default editor
-  default_editor: "id"
+  default_editor: "potlatch2"
   # OAuth consumer key for Potlatch 2
-  #potlatch2_key: ""
+  potlatch2_key: "<%= @oauth_consumer_key %>"
   # OAuth consumer key for the web site
   #oauth_key: ""
   # OAuth consumer key for iD
