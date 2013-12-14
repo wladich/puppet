@@ -77,15 +77,6 @@ class osm_pg_db {
       order       => '002',
     }
 
-    postgresql::server::pg_hba_rule { 'trust access for java clients. FIXME: add password':
-      type        => 'host',
-      address     => '127.0.0.1/32',
-      database    => 'osm',
-      user        => 'osm',
-      auth_method => 'trust',
-      order       => '003',
-    }
-
     postgresql::server::role { "osm": }
     postgresql::server::database { "osm":
         owner => "osm",
