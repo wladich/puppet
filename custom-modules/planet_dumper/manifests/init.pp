@@ -52,7 +52,7 @@ class planet_dumper {
     }
 
     file { '/srv/planet/replication/minute/state.txt':
-        ensure => present,
+        replace => no,
         require => File['/srv/planet/replication/minute'],
         owner => 'paladin',
         group => 'paladin',

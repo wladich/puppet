@@ -3,7 +3,6 @@ import 'users.pp'
 import 'utilities.pp'
 import 'osmsite.pp'
 import 'osmserver.pp'
-import 'planet_dumper.pp'
 
 include user_w
 class {'osm_site':
@@ -12,4 +11,3 @@ class {'osm_site':
 include osm_server
 include osmosis
 include cgimap
-include planet_dumper
