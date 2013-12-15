@@ -11,3 +11,4 @@ class {'osm_site':
 include osm_server
 include osmosis
 include cgimap
+include direct_osm2pgsql_update
