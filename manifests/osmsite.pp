@@ -61,14 +61,6 @@ class osm_user {
 class osm_pg_db {
     include postgres_server_osm
 
-    postgresql::server::pg_hba_rule { 'local access as postgres user':
-      type        => 'local',
-      database    => 'all',
-      user        => 'postgres',
-      auth_method => 'ident',
-      order       => '001',
-    }
-
     postgresql::server::pg_hba_rule { 'local access as osm user':
       type        => 'local',
       database    => 'osm',
