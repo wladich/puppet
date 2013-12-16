@@ -6,7 +6,7 @@ function do_build {
         exit 1
     fi;
     mkdir $chroot_dir
-    sudo mount -t tmpfs tmpfs $chroot_dir -o size=1G
+    sudo mount -t tmpfs tmpfs $chroot_dir -o size=2G
     sudo debootstrap --arch $arch --variant minbase precise $chroot_dir http://mirror.yandex.ru/ubuntu/
     sudo chroot $chroot_dir bash -c "
         set -x
