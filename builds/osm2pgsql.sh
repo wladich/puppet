@@ -6,6 +6,7 @@ set -e
 
 NAME=osm2pgsql
 GIT="https://github.com/openstreetmap/osm2pgsql.git"
+REVISION="v0.82.0"
 DEPS="build-essential libxml2-dev libgeos++-dev libpq-dev libbz2-dev proj libtool automake git\
       libprotobuf-c0-dev protobuf-c-compiler"
 BUILD="./autogen.sh
