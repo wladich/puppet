@@ -1,5 +1,6 @@
 class direct_osm2pgsql_update {
     include osmosis
+    include osm2pgsql
     include planet_dumper::account
     
     file {'/opt/osm2pg_direct':
