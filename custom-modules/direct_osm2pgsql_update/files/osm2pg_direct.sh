@@ -13,11 +13,12 @@ while true; do
         --simplify-change --write-xml-change $TMP_FILE
 
     tables=`psql  -d gis -c '\dt;'`
-    if [[ "tables" == "*planet_osm_point*" ]]; then
+    if [[ "$tables" == "*planet_osm_point*" ]]; then
         action="--append"
-        echo "Creating tables in database gis"
+        echo "Appending to existing dabase gis"
     else
         action="--create"
+        echo "Creating tables in database gis"
     fi
 
     osm2pgsql --slim $action $TMP_FILE --style /opt/osm2pg_direct/mappodm.style --cache 100 -U paladin
