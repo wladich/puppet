@@ -1,13 +1,8 @@
 class osmosis {
     include java
-    file { '/var/cache/puppet' :
-        ensure => directory,
-        recurse => true
-    }
 
     file { '/var/cache/puppet/osmosis.tgz' :
         source => 'puppet:///modules/osmosis/osmosis-0.43.1.tgz',
-        require => File['/var/cache/puppet'],
         notify => Exec['unpack osmosis']
     }
 

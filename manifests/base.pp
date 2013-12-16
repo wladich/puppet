@@ -15,4 +15,9 @@ class { 'timezone':
     autoupgrade => true
 }
 
+file { '/var/cache/puppet' :
+    ensure => directory,
+    recurse => true
+}
+
 include locales
