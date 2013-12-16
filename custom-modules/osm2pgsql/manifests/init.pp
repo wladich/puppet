@@ -4,7 +4,6 @@ class osm2pgsql{
         package {'libproj0':}
         package {'libprotobuf-c0':}
     }
-    include osm2pgsql
     file {'/opt/osm2pgsql':
         ensure => directory,
         mode => 755
@@ -17,7 +16,7 @@ class osm2pgsql{
         default: { fail("Unrecognized architecture") }
     }
     file {'/opt/osm2pgsql/osm2pgsql' :
-        ensure => file,
+        ensure => present,
         mode => 755,
         source => "puppet:///modules/osm2pgsql/${arch}/osm2pgsql",
         require => File['/opt/osm2pgsql'],
