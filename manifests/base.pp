@@ -21,3 +21,8 @@ file { '/var/cache/puppet' :
 }
 
 include locales
+package {'rsyslog':}
+service {'rsyslog':
+    ensure => running,
+    enable => true
+}
