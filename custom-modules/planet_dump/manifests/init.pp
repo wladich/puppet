@@ -20,6 +20,7 @@ class planet_dump {
     }
 
     include planet_dump::minute_diff
+    include nginx
     file {'/etc/nginx/sites-enabled/planet':
        mode => 644,
        source => "puppet:///modules/planet_dump/nginx.config",
