@@ -25,7 +25,7 @@ class planet_dump::minute_diff {
         require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt']],
         user => 'paladin',
         minute => '*',
-        command => '/usr/local/bin/osmosis -q --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/osm_minute_dump.log 2>&1'
+        command => '/usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/osm_minute_dump.log 2>&1'
     }
 
 }
