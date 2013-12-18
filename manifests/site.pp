@@ -12,4 +12,6 @@ include osm_server
 include cgimap
 include planet_dump
 
-include tiles
+class {'tiles':
+    minute_diff_url => 'http://planet.osm.wladich.tk/replication/minute/'
+}
