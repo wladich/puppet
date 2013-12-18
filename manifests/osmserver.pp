@@ -10,17 +10,6 @@ class uwsgi {
     }
 }
 
-class nginx {
-    package {'nginx-full':}
-    service { 'nginx':
-        ensure     => running,
-        enable     => true,
-        hasrestart => true,
-        hasstatus  => true,
-        require    => Package['nginx-full']
-    }
-
-}
 
 class osm_server {
     include uwsgi
@@ -35,10 +24,4 @@ class osm_server {
         source => "puppet:///files/osm/nginx.config",
         notify => Service['nginx'],
         }
-    file {'/etc/nginx/sites-enabled/default':
-        ensure => absent,
-        notify => Service['nginx'],
-
-    }
-
 }
