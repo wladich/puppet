@@ -12,18 +12,10 @@ class tiles::mod_tile_config {
         owner => 'tiles'
     }
 
-#    file {'/var/lib/mod_tile': 
-#        ensure => link,
-#        target => '/var/lib/tiles/tiles',
-#        force => true
-#    }
-
     file { '/etc/rsyslog.d/renderd.conf':
-#        content => "renderd.* /var/log/renderd.log",
         source => 'puppet:///modules/tiles/renderd.rsyslog',
         notify => Service['rsyslog']
     }
-
 
     file {'/etc/init.d/renderd':
         ensure => absent,
