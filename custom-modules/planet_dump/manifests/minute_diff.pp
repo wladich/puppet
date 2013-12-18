@@ -13,14 +13,13 @@ class planet_dump::minute_diff {
         source => 'puppet:///modules/planet_dump/state.txt.bootstrap'
     }
 
-    file {'/opt/planet_dump/reset_minute_diff.sh': 
-        source => 'puppet:///modules/planet_dump/reset_minute_diff.sh'
-    }
-
-    file {'/usr/local/bin/reset_minute_diff.sh':
-        ensure => link,
-        target => '/opt/planet_dump/reset_minute_diff.sh'
-    }
+#    file {'/opt/planet_dump/reset_minute_diff.sh': 
+#        source => 'puppet:///modules/planet_dump/reset_minute_diff.sh'
+#    }
+#    file {'/usr/local/bin/reset_minute_diff.sh':
+#        ensure => link,
+#        target => '/opt/planet_dump/reset_minute_diff.sh'
+#    }
     
     cron {'minute replication':
         require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt']],
