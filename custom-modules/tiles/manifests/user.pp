@@ -23,7 +23,7 @@ class tiles::user {
     }
 
     postgresql::server::role { "tiles": }
-    postgresql::server::database_grant { 'planet dumps':
+    postgresql::server::database_grant { 'read postgres for rendering':
       privilege => 'CONNECT',
       db        => 'gis',
       role      => 'tiles',
