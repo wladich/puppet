@@ -21,11 +21,11 @@ class planet_dump::minute_diff {
 #        target => '/opt/planet_dump/reset_minute_diff.sh'
 #    }
     
-    cron {'minute replication':
+    cron {'minute replication dumps':
         require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt']],
         user => 'paladin',
         minute => '*',
-        command => '/usr/local/bin/osmosis -q --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/'
+        command => '/usr/local/bin/osmosis -q --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/osm_minute_dump.log 2>&1'
     }
 
 }
