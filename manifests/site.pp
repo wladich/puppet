@@ -10,6 +10,6 @@ class {'osm_site':
     }
 include osm_server
 include cgimap
-include direct_osm2pgsql_update
+include planet_dump
 
 include tiles
