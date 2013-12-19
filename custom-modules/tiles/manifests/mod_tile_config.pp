@@ -10,7 +10,7 @@ class tiles::mod_tile_config {
     }
 
     apache::mod {'expires':}
-    apache::mod {'remoteip':}
+#    apache::mod {'remoteip':}
     apache::mod {'headers':}
 
     file {'/var/lib/tiles/tiles':
@@ -67,7 +67,7 @@ class tiles::mod_tile_config {
         error_log_file => 'tiles_error.log',
         custom_fragment => "
             BufferedLogs on
-            RemoteIPHeader X-Forwarded-For
+#            RemoteIPHeader X-Forwarded-For
             ModTileTileDir /var/lib/tiles/tiles
             LoadTileConfigFile /etc/renderd.conf
 
