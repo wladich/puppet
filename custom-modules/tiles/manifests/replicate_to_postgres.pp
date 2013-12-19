@@ -56,7 +56,6 @@ class tiles::replicate_to_postgres ($minute_diff_url) {
     }
 
     service {'replicated':
-        ensure => running,
         enable => true,
         require => [File['/var/lib/osm_replicate/state.txt'],
                     Exec["setup postgis for db gis for user replicator"],
