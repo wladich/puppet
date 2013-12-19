@@ -27,12 +27,13 @@ class tiles::user {
       privilege => 'CONNECT',
       db        => 'gis',
       role      => 'tiles',
-      notify    => Postgresql_psql['read permossions on db gis for user tiles']
+      notify    => Postgresql_psql['read permissions on db gis for user tiles']
     }
 
-    postgresql_psql  {'read permossions on db gis for user tiles':
+    postgresql_psql  {'read permissions on db gis for user tiles':
         refreshonly => true,
         db => 'gis',
-        command => 'GRANT SELECT ON ALL TABLES IN SCHEMA public TO tiles'
+        command => 'GRANT SELECT ON ALL TABLES IN SCHEMA public TO tiles;
+                    ALTER DEFAULT PRIVILEGES FOR ROLE tiles GRANT SELECT ON TABLES TO tiles;'
     }
 }
