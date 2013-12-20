@@ -15,3 +15,5 @@ include planet_dump
 class {'tiles':
     minute_diff_url => 'http://planet.osm.wladich.tk/replication/minute/'
 }
+
+include swapfile
