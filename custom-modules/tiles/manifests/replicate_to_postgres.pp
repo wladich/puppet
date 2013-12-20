@@ -28,12 +28,6 @@ class tiles::replicate_to_postgres ($minute_diff_url) {
         notify => Service['replicated']
     }
 
-    file {'/var/lib/osm_replicate/state.txt':
-        replace => false,
-        source => 'puppet:///modules/tiles/state.txt.bootstrap',
-        owner => 'replicator'
-    }
-
     file {'/usr/local/bin/replicated':
         source => 'puppet:///modules/tiles/replicated',
         notify => Service['replicated'],
@@ -57,7 +51,7 @@ class tiles::replicate_to_postgres ($minute_diff_url) {
 
     service {'replicated':
         enable => true,
-        require => [File['/var/lib/osm_replicate/state.txt'],
+        require => [
                     Exec["setup postgis for db gis for user replicator"],
                     File['/var/log/replicated']]
     }
