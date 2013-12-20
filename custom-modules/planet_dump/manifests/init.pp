@@ -8,23 +8,19 @@ class planet_dump {
         mode => 755
     }
 
-    file {'/srv/planet/replication':
+    file {'/var/log/planet':
         ensure => directory,
         owner => 'paladin',
         mode => 755
     }
 
-    file {'/opt/planet_dump':
-        ensure => directory,
-        mode => 755    
-    }
-
     include planet_dump::minute_diff
+    include planet_dump::dump
+
     include nginx
     file {'/etc/nginx/sites-enabled/planet':
        mode => 644,
        source => "puppet:///modules/planet_dump/nginx.config",
        notify => Service['nginx'],
        }
-
 }

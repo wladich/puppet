@@ -1,5 +1,12 @@
 class planet_dump::minute_diff {
     include osmosis
+
+    file {'/srv/planet/replication':
+        ensure => directory,
+        owner => 'paladin',
+        mode => 755
+    }
+
     file {'/srv/planet/replication/minute':
         ensure => directory,
         owner => 'paladin',
@@ -13,19 +20,11 @@ class planet_dump::minute_diff {
         source => 'puppet:///modules/planet_dump/state.txt.bootstrap'
     }
 
-#    file {'/opt/planet_dump/reset_minute_diff.sh': 
-#        source => 'puppet:///modules/planet_dump/reset_minute_diff.sh'
-#    }
-#    file {'/usr/local/bin/reset_minute_diff.sh':
-#        ensure => link,
-#        target => '/opt/planet_dump/reset_minute_diff.sh'
-#    }
-    
     cron {'minute replication dumps':
-        require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt']],
+        require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt'], File['/var/log/planet']],
         user => 'paladin',
         minute => '*',
-        command => '/usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/osm_minute_dump.log 2>&1'
+        command => 'nice -n 18 /usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/planet/minute.log 2>&1'
     }
 
 }
