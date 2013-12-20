@@ -39,8 +39,12 @@ do
         osm2pgsql --slim $action  \
                   --style /var/lib/osm_replicate/osm2pgsql.style\
                   --cache 100  --disable-parallel-indexing --unlogged \
-                  --cache-strategy optimized \
-                  $CHANGES_FILE | tr '\r' '\n'
+                  --cache-strategy sparse \
+                  $CHANGES_FILE 2>&1 |  (while read -r -n 100 l; do echo $l; done)
+        if [ ${PIPESTATUS[0]} != 0 ]; then
+            echo "Error while importing changes, exiting"
+            exit 1
+        fi
     rm $CHANGES_FILE
     echo 'All ok, sleeping'
     sleep 30
