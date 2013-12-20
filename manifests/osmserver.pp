@@ -12,16 +12,15 @@ class uwsgi {
 
 
 class osm_server {
+    include cgimap
     include uwsgi
-    include nginx
     file {'/etc/uwsgi/apps-enabled/osm.ini':
         mode => 644,
         source => "puppet:///files/osm/uwsgi.config",
         notify => Service['uwsgi'],
         }
-    file {'/etc/nginx/sites-enabled/osm':
-        mode => 644,
+
+    nginx::site{'osm':
         source => "puppet:///files/osm/nginx.config",
-        notify => Service['nginx'],
-        }
+    }
 }

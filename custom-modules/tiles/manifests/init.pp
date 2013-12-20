@@ -14,11 +14,10 @@ class tiles ($minute_diff_url){
         minute_diff_url => $minute_diff_url
     }
 
-    include nginx
-    file {'/etc/nginx/sites-enabled/tiles':
+
+    nginx::site {'tiles':
         source => 'puppet:///modules/tiles/nginx.config',
-        notify => Service['nginx']
-    }
+        }
 
     file {'/usr/local/bin/replication_reset.sh':
         source => 'puppet:///modules/tiles/replication_reset.sh',
