@@ -5,7 +5,7 @@ LOG_FILE=/var/log/replicated/replicated.log
 WORK_DIR=/var/lib/osm_replicate
 CHANGES_FILE=$WORK_DIR/changes.xml
 TEMP_FILE=$WORK_DIR/changes.xml.tmp
-FLAT_FILE=$WORK_DIR/nodes
+EXPIRE_FILE=$WORK_DIR/tiles.expire.txt
 
 # Send output to the log
 exec >> ${LOG_FILE} 2>&1
@@ -27,27 +27,25 @@ do
         echo "Failed to fetch changes - waiting a few minutes before retry"
         sleep 300
     else
-        tables=`psql  -d gis -c '\dt;'`
-        if echo "$tables" | grep -q "planet_osm_point"; then
-            action="--append"
-            echo "Appending to existing dabase gis"
-        else
-            action="--create"
-            echo "Creating tables in database gis"
-            if [ -e "$FLAT_FILE" ]; then rm $FLAT_FILE; fi
+        if [ -e "$EXPIRE_FILE" ]; then 
+            echo "Found old tile expire file, applying it"
+            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10
         fi
-        osm2pgsql --slim $action  \
+        osm2pgsql --slim --append  \
                   --style /var/lib/osm_replicate/osm2pgsql.style\
                   --cache 100  --disable-parallel-indexing --unlogged \
                   --cache-strategy sparse \
+                  --expire-output "$EXPIRE_FILE" --expire-tiles 12 \
                   $CHANGES_FILE 2>&1 |  (while read -r -n 100 l; do echo $l; done)
         if [ ${PIPESTATUS[0]} != 0 ]; then
-            echo "Error while importing changes, exiting"
+            echo "Error while importing changes, osm2pgsql ended with status ${PIPESTATUS[0]}, exiting"
             exit 1
         fi
-    rm $CHANGES_FILE
-    echo 'All ok, sleeping'
-    sleep 30
+        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10
+        rm "$CHANGES_FILE"
+        rm "$EXPIRE_FILE"
+      echo 'All ok, sleeping'
+      sleep 30
     fi
 done
             

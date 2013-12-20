@@ -18,4 +18,9 @@ class tiles::user_replicator {
     }
 
     postgresql::server::role { "replicator": }
+
+    sudo::conf { 'replicator':
+        content  => "replicator ALL=(tiles) NOPASSWD: /usr/bin/render_expired",
+    }
+
 }
