@@ -11,9 +11,12 @@ class tiles::replicate_to_postgres ($minute_diff_url) {
         require => Class['tiles::user_replicator'],
     }
     
+    package {"postgresql-9.1-postgis":}
+
     exec {"setup postgis for db gis for user replicator":
         user => 'postgres',
         refreshonly => true,
+        require => Package["postgresql-9.1-postgis"],
         command => 'psql -d gis -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql &&\
                     psql -d gis -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql &&\
                     psql -d gis -f /usr/share/postgresql/9.1/contrib/postgis_comments.sql &&\
