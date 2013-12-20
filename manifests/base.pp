@@ -26,3 +26,48 @@ service {'rsyslog':
     ensure => running,
     enable => true
 }
+
+
+resources { "firewall":
+  purge => true
+}
+Firewall {
+  before  => Class['my_fw_post'],
+  require => Class['my_fw_pre'],
+}
+class { ['my_fw_pre', 'my_fw_post']: }
+class { 'firewall': }
+class my_fw_pre {
+  Firewall {
+    require => undef,
+  }
+
+  # Default firewall rules
+  firewall { '000 accept all icmp':
+    proto   => 'icmp',
+    action  => 'accept',
+  }->
+  firewall { '001 accept all to lo interface':
+    proto   => 'all',
+    iniface => 'lo',
+    action  => 'accept',
+  }->
+  firewall { '002 accept related established rules':
+    proto   => 'all',
+    state   => ['RELATED', 'ESTABLISHED'],
+    action  => 'accept',
+  }
+}
+
+class my_fw_post {
+  firewall { '999 drop all':
+    proto   => 'all',
+    action  => 'drop',
+    before  => undef,
+  }
+}
+firewall { '998 allow ssh access':
+  port   => 22,
+  proto  => tcp,
+  action => accept,
+}
