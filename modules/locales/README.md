@@ -1,40 +1,18 @@
-[![Build Status](https://secure.travis-ci.org/attachmentgenie/puppet-module-locales.png)](http://travis-ci.org/attachmentgenie/puppet-module-locales)
+# puppet-locales
 
-Puppet Locales Module
-=====================
+Manage locales via Puppet
 
-Module for configuring locales.
+## Usage
 
-Tested on Debian GNU/Linux 6.0 Squeeze and Ubuntu 10.4 LTS with
-Puppet 2.6. Patches for other operating systems are welcome.
+By default, en and de locales will be generated.
 
+```
+  class { 'locales': }
+```
 
-Installation
-------------
-
-Clone this repo to a locales directory under your Puppet modules directory:
-
-    git clone git://github.com/uggedal/puppet-module-locales.git locales
-
-If you don't have a Puppet Master you can create a manifest file
-based on the notes below and run Puppet in stand-alone mode
-providing the module directory you cloned this repo to:
-
-    puppet apply --modulepath=modules test_locales.pp
-
-
-Usage
------
-
-If you include the locales class the standard available locale list and
-default locale will be build and configured:
-
-    include locales
-
-You can override the default locale and available locales by including
-the module with this special syntax:
-
-    class { locales:
-      default_value  => "nb_NO.UTF-8",
-      available      => ["nb_NO.UTF-8 UTF-8", "en_GB.UTF-8 UTF-8"]
-    }
+## Other class parameters
+* ensure: present or absent, default: present
+* autoupgrade: true or false, default: false. Auto-upgrade package, if there is a newer version.
+* package: string, default: OS specific. Set package name, if platform is not supported.
+* config_file: string, default: OS specific. Set config_file, if platform is not supported.
+* locale_gen_command: string, default: OS specific. Set locale_gen_command, if platform is not supported.
