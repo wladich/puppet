@@ -20,3 +20,8 @@ class {'tiles':
     minute_diff_url => 'http://planet.osm.wladich.tk/replication/minute/'
 }
 
+firewall { '200 allow http access':
+  port   => 80,
+  proto  => tcp,
+  action => accept,
+}
