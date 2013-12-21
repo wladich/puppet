@@ -13,7 +13,8 @@ class planet_dump::dump {
     }
     
     cron {'weekly planet dump':
-        require => [Class['osmosis'], File['/var/log/planet'], File['/srv/planet/pbf'], File['/usr/local/bin/planet_dump.sh']],
+        require => [Class['osmosis'], File['/var/log/planet'], File['/srv/planet/pbf'], File['/usr/local/bin/planet_dump.sh'],
+                    User['paladin']],
         user => 'paladin',
         weekday => 3,
         hour => 12,
