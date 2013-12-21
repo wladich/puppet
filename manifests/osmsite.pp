@@ -1,3 +1,4 @@
+include nodejs
 class pkg_build-essential {package {'build-essential':}}
 class pkg_ruby191 {package { 'ruby1.9.1': }}
 class gem_bundle { package { 'bundle': ensure => present, provider => gem}}
@@ -21,6 +22,7 @@ class osm_gems_build_deps {
 class osm_site_deps {
     include pkg_ruby191
     include gem_bundle
+    include nodejs
 }
 
 class osm_site_config ($oauth_consumer_key = "") {
