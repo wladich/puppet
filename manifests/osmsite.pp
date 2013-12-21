@@ -80,7 +80,8 @@ class osm_pg_db {
         user => 'postgres',
         refreshonly => true,
         subscribe => Postgresql::Server::Database["osm"],
-        command => 'psql -d osm -c "CREATE EXTENSION btree_gist"'
+        command => 'psql -d osm -c "CREATE EXTENSION btree_gist"',
+        require => Package['postgresql-contrib-9.1']
     }
 }
 
