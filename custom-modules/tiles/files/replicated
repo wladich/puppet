@@ -6,6 +6,7 @@ WORK_DIR=/var/lib/osm_replicate
 CHANGES_FILE=$WORK_DIR/changes.xml
 TEMP_FILE=$WORK_DIR/changes.xml.tmp
 EXPIRE_FILE=$WORK_DIR/tiles.expire.txt
+TILES_DIR=/var/lib/tiles/tiles
 
 # Send output to the log
 exec >> ${LOG_FILE} 2>&1
@@ -41,7 +42,7 @@ do
             echo "Error while importing changes, osm2pgsql ended with status ${PIPESTATUS[0]}, exiting"
             exit 1
         fi
-        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10
+        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10 --tile-dir $TILES_DIR
         rm "$CHANGES_FILE"
         rm "$EXPIRE_FILE"
       echo 'All ok, sleeping'
