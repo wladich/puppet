@@ -21,7 +21,8 @@ class planet_dump::minute_diff {
     }
 
     cron {'minute replication dumps':
-        require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt'], File['/var/log/planet']],
+        require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt'], File['/var/log/planet'],
+                    User['paladin']],
         user => 'paladin',
         minute => '*',
         command => 'nice -n 18 /usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/planet/minute.log 2>&1'
