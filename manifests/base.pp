@@ -67,6 +67,7 @@ class my_fw_post {
     before  => undef,
   }
 }
+
 firewall { '998 allow ssh access':
   port   => 22,
   proto  => tcp,
