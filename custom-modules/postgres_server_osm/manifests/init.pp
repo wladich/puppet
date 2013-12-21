@@ -10,4 +10,8 @@ class postgres_server_osm{
       auth_method => 'ident',
       order       => '001',
     }
+
+    package {'postgresql-contrib-9.1':
+        require => Class ['Postgresql::Server']
+    }
 }
