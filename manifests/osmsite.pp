@@ -51,7 +51,6 @@ class osm_user {
         require => User['osm'] }
 
     user { 'osm': 
-        shell => '/bin/false',
         managehome => no,
         home => '/home/osm',
         gid => 'osm',
@@ -110,6 +109,7 @@ class update_pg_functions {
 class update_gems {
     include osm_gems_build_deps
     exec { 'install gems': 
+        user => 'osm',
         require => Class['gem_bundle'],
         cwd => "/home/osm/site",
         timeout => 1000,
@@ -129,9 +129,16 @@ class update_db_schema {
 }
 
 class update_osm_assets {
+    include zip
+    exec {'build patches':
+        command => "/home/osm/site/patch/potlatch2/build.sh",
+        refreshonly => true,
+        require => Class['zip']
+    }
+
     exec {'cleanup compiled assets':
-        command => 'rm -r /home/osm/public/assets; fi',
-        onlyif => '[ -e /home/osm/public/assets ]',
+        command => 'rm -r /home/osm/site/public/assets; fi',
+        onlyif => '[ -e /home/osm/site/public/assets ]',
         refreshonly => true,
     }
 
@@ -140,7 +147,7 @@ class update_osm_assets {
         cwd => "/home/osm/site",
         refreshonly => true,
         command => "/usr/local/bin/bundle exec rake assets:precompile",
-        require => Exec['cleanup compiled assets']
+        require => [Exec['cleanup compiled assets'], Exec['build patches']]
     }    
 }
 
@@ -150,6 +157,7 @@ class osm_site ($oauth_consumer_key = "") {
     include osm_pg_db
     
     vcsrepo { 'osm': 
+        user => 'osm',
         path => '/home/osm/site',
         ensure => latest,
         provider => git,
@@ -165,20 +173,24 @@ class osm_site ($oauth_consumer_key = "") {
     } 
 
     class{ 'update_gems':
-        require => [Vcsrepo['osm']]
+        require => Vcsrepo['osm'],
+        notify => Service['uwsgi']
     } 
 
     class {'osm_site_config':
         oauth_consumer_key => $oauth_consumer_key,
-        require => Vcsrepo['osm']
+        require => Vcsrepo['osm'],
+        notify => Service['uwsgi']
     }
 
     class{ 'update_db_schema':
         require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], 
-                    Class['osm_pg_db'], Class['update_gems']]
+                    Class['osm_pg_db'], Class['update_gems']],
+        notify => Service['uwsgi']
     } 
     class {'update_osm_assets':
-        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], Class['update_gems']]
+        require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], Class['update_gems']],
+        notify => Service['uwsgi']
     }
 
     file { '/var/log/osm': 
