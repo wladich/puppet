@@ -10,7 +10,8 @@ class planet_dump::account {
       privilege => 'CONNECT',
       db        => 'osm',
       role      => 'paladin',
-      notify    => Postgresql_psql['read permissions on db osm for user paladin']
+      notify    => Postgresql_psql['read permissions on db osm for user paladin'],
+      require   => Postgresql::Server::Database["osm"]
     }
     postgresql_psql  {'read permissions on db osm for user paladin':
         refreshonly => true,

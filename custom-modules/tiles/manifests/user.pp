@@ -27,7 +27,8 @@ class tiles::user {
       privilege => 'CONNECT',
       db        => 'gis',
       role      => 'tiles',
-      notify    => Postgresql_psql['read permissions on db gis for user tiles']
+      notify    => Postgresql_psql['read permissions on db gis for user tiles'],
+      require   => Postgresql::Server::Database["gis"]
     }
 
     postgresql_psql  {'read permissions on db gis for user tiles':
