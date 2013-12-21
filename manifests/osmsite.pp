@@ -107,7 +107,7 @@ class update_pg_functions {
 class update_gems {
     include osm_gems_build_deps
     exec { 'install gems': 
-        require => Class['osm_gems_build_deps'],
+        require => Class['gem_bundle'],
         cwd => "/home/osm/site",
         timeout => 1000,
         refreshonly => true,
