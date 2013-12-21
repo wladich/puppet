@@ -19,9 +19,11 @@ class tiles ($minute_diff_url){
         source => 'puppet:///modules/tiles/nginx.config',
         }
 
+    include wget    
     file {'/usr/local/bin/replication_reset.sh':
         source => 'puppet:///modules/tiles/replication_reset.sh',
-        mode => 755
+        mode => 755,
+        require => Class['wget']
     }
 
 }
