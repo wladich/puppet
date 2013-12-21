@@ -1,9 +1,7 @@
 class tiles::mod_tile_config {
     include tiles::user
 
-    class {'apache_mod_tile':
-      require => Class['apache']
-    }
+    include apache_mod_tile
 
     apache::mod { 'tile': 
         notify => Service['apache2'],
@@ -59,6 +57,7 @@ class tiles::mod_tile_config {
 
     apache::vhost { 'tiles.osm':
         notify => Service['apache2'],
+        require => Class['apache_mod_tile'],
         vhost_name => '*',
         port => '8579',
         docroot => '/var/lib/tiles',
