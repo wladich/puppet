@@ -20,9 +20,7 @@ file { '/var/cache/puppet' :
     recurse => true
 }
 
-class { locales:
-  locales  => "en_US.UTF-8",
-}
+class{'locale':}
 
 package {'rsyslog':}
 service {'rsyslog':
