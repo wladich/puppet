@@ -43,6 +43,7 @@ do
             exit 1
         fi
         cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10 --tile-dir $TILES_DIR
+        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
         rm "$CHANGES_FILE"
         rm "$EXPIRE_FILE"
       echo 'All ok, sleeping'
