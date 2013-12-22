@@ -20,12 +20,10 @@ class planet_dump::minute_diff {
         source => 'puppet:///modules/planet_dump/state.txt.bootstrap'
     }
 
-    cron {'minute replication dumps':
+    file {'/etc/cron.d/osm-minute-diff':
         require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt'], File['/var/log/planet'],
                     User['paladin']],
-        user => 'paladin',
-        minute => '*',
-        command => 'nice -n 18 /usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/planet/minute.log 2>&1'
+        content => "* * * * * paladin nice -n 18 /usr/local/bin/osmosis --replicate-apidb validateSchemaVersion=false user=paladin database=osm --write-replication workingDirectory=/srv/planet/replication/minute/ >>/var/log/planet/minute.log 2>&1\n"
     }
 
 }
