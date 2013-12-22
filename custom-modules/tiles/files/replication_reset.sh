@@ -21,6 +21,7 @@ wget $state_url -O /tmp/_replication_reset_state.txt
 
 echo "Stopping updater service"
 stop replicated || true
+stop renderd
 if [ -e "$CHANGES_FILE" ]; then rm "$CHANGES_FILE"; fi
 
 echo "Importing planet dump"
@@ -30,9 +31,11 @@ sudo -u replicator osm2pgsql --slim --create  \
           --cache-strategy sparse \
           $DUMP_FILE
 mv /tmp/_replication_reset_state.txt $WORK_DIR/state.txt
+
 echo "Cleaning tiles cache"
 touch /var/lib/tiles/tiles/dummy
 rm -rf /var/lib/tiles/tiles/*
 echo "Starting updater service"
 start replicated
+start renderd
 echo "All ok"
