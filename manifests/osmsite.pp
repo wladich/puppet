@@ -42,9 +42,8 @@ class osm_user {
         ensure => present
     }
 
-    file { 'osm_home': 
+    file { '/home/osm': 
         ensure => 'directory',
-        path => '/home/osm',
         owner => 'osm',
         group => 'www-data',
         mode => 750,
