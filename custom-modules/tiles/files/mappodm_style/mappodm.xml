@@ -92,10 +92,11 @@
 >
     <StyleName>forest</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='forest') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='forest') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -188,10 +189,11 @@
 >
     <StyleName>sparse</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='sparse') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='sparse') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -284,10 +286,11 @@
 >
     <StyleName>felling</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -380,10 +383,11 @@
 >
     <StyleName>felling_overgrown</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling_overgrown') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling_overgrown') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -408,10 +412,11 @@
 >
     <StyleName>contours</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT way, elevation, coalesce("deprecated:contour-width", 'nul') as width FROM planet_osm_line WHERE relief='contour') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT way, elevation, coalesce("deprecated:contour-width", 'nul') as width FROM planet_osm_line WHERE relief='contour') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -426,10 +431,11 @@
 >
     <StyleName>contours-general</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT st_simplify(way, 100) as way, elevation FROM planet_osm_line WHERE relief='contour' AND "deprecated:contour-width"='major') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT st_simplify(way, 100) as way, elevation FROM planet_osm_line WHERE relief='contour' AND "deprecated:contour-width"='major') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -454,10 +460,11 @@
 >
     <StyleName>contour-hatches</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT way, coalesce("deprecated:contour-width", 'nul') as width FROM planet_osm_line WHERE relief='hatch') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT way, coalesce("deprecated:contour-width", 'nul') as width FROM planet_osm_line WHERE relief='hatch') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -478,10 +485,11 @@
     <StyleName>cliff</StyleName>
     <StyleName>cliff-hatches</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE relief='cliff') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE relief='cliff') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -495,10 +503,11 @@
 >
     <StyleName>ravine</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT way FROM planet_osm_line WHERE relief='ravine') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT way FROM planet_osm_line WHERE relief='ravine') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -532,10 +541,11 @@
 >
     <StyleName>passability</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE passability IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE passability IS NOT NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -643,10 +653,11 @@
 >
     <StyleName>urban</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='urban') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='urban') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -754,10 +765,11 @@
 >
     <StyleName>rural</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='rural') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='rural') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -865,10 +877,11 @@
 >
     <StyleName>cottage</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='cottage') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='cottage') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -976,10 +989,11 @@
 >
     <StyleName>restricted</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='restricted') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='restricted') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1087,10 +1101,11 @@
 >
     <StyleName>cemetry</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='cemetry') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='cemetry') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1183,10 +1198,11 @@
     <StyleName>river-casing</StyleName>
     <StyleName>river-inner</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE river IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE river IS NOT NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1204,10 +1220,11 @@
 >
     <StyleName>swamp</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE swamp IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE swamp IS NOT NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1220,10 +1237,11 @@
 >
     <StyleName>railway</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='railway') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='railway') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1237,10 +1255,11 @@
 >
     <StyleName>gasline</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='gasline') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='gasline') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1254,10 +1273,11 @@
 >
     <StyleName>powerline</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='powerline') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='powerline') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1271,10 +1291,11 @@
 >
     <StyleName>powerline_major</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='powerline_major') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='powerline_major') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1288,10 +1309,11 @@
 >
     <StyleName>abandoned-road</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='abandoned') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='abandoned') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1305,10 +1327,11 @@
 >
     <StyleName>cutting-wide</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='cutting_wide') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='cutting_wide') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1322,10 +1345,11 @@
 >
     <StyleName>trench</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='trench') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='trench') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1346,10 +1370,11 @@
     <StyleName>wall</StyleName>
     <StyleName>wall-casing</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='wall') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='wall') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1363,10 +1388,11 @@
 >
     <StyleName>cutting</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='cutting') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='cutting') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1380,10 +1406,11 @@
 >
     <StyleName>path</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='path') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='path') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1397,10 +1424,11 @@
 >
     <StyleName>dirt-roads-drive</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt' AND drive IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt' AND drive IS NOT NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1414,10 +1442,11 @@
 >
     <StyleName>dirt-roads</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt' AND drive IS NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt' AND drive IS NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1438,10 +1467,11 @@
     <StyleName>advanced-roads-drive-casing</StyleName>
     <StyleName>advanced-roads-drive</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='advanced' AND drive IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='advanced' AND drive IS NOT NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1462,10 +1492,11 @@
     <StyleName>advanced-roads-casing</StyleName>
     <StyleName>advanced-roads</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='advanced' AND drive IS NULL) AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='advanced' AND drive IS NULL) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1479,10 +1510,11 @@
 >
     <StyleName>asphalt-roads</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='asphalt') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='asphalt') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1495,10 +1527,11 @@
 >
     <StyleName>major-roads</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='major') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='major') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1511,10 +1544,11 @@
 >
     <StyleName>highways</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='highway') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='highway') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1528,10 +1562,11 @@
 >
     <StyleName>asphalt-roads2</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='asphalt') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='asphalt') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1544,10 +1579,11 @@
 >
     <StyleName>major-roads2</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='major') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='major') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1566,10 +1602,11 @@
     <StyleName>highways2-fill</StyleName>
     <StyleName>highways2-inner</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='highway') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='highway') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1577,10 +1614,11 @@
 >
     
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='dirt') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1759,10 +1797,11 @@
     <StyleName>water</StyleName>
     <StyleName>water-casing</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1770,10 +1809,11 @@
 >
     
     <Datasource>
-       <Parameter name="table"><![CDATA[(SELECT (ST_Dump(ST_Union(way))).geom as way FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT (ST_Dump(ST_Union(way))).geom as way FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1834,10 +1874,11 @@
 >
     <StyleName>poi</StyleName>
     <Datasource>
-       <Parameter name="table"><![CDATA[planet_osm_point]]></Parameter>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[planet_osm_point]]></Parameter>
     </Datasource>
   </Layer>
 
