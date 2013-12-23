@@ -6,7 +6,7 @@ WORK_DIR=/var/lib/osm_replicate
 CHANGES_FILE=$WORK_DIR/changes.xml
 TEMP_FILE=$WORK_DIR/changes.xml.tmp
 EXPIRE_FILE=$WORK_DIR/tiles.expire.txt
-TILES_DIR=/var/lib/tiles/tiles
+TILES_DIR=/var/lib/tiles/tiles/
 
 # Send output to the log
 exec >> ${LOG_FILE} 2>&1
@@ -15,11 +15,13 @@ cd $WORK_DIR
 
 while true
 do
+    echo '====================================================================================================================='
+    date
     # Fetch the next set of changes
     if [ ! -e "$CHANGES_FILE" ]; then
         echo "Fetching new changes"
         set +e
-        osmosis --read-replication-interval --simc --write-xml-change file="${TEMP_FILE}" && mv $TEMP_FILE $CHANGES_FILE
+        osmosis -q --read-replication-interval --simc --write-xml-change file="${TEMP_FILE}" && mv $TEMP_FILE $CHANGES_FILE
         set -e
     else
         echo "Found changes file from previous run. Download skipped."
@@ -30,20 +32,25 @@ do
     else
         if [ -e "$EXPIRE_FILE" ]; then 
             echo "Found old tile expire file, applying it"
-            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10
+            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
+#            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
+#            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -t --tile-dir $TILES_DIR
         fi
         osm2pgsql --slim --append  \
                   --style /var/lib/osm_replicate/osm2pgsql.style\
                   --cache 100  --disable-parallel-indexing --unlogged \
                   --cache-strategy sparse \
-                  --expire-output "$EXPIRE_FILE" --expire-tiles 12 \
+                  --expire-output "$EXPIRE_FILE" --expire-tiles 15 \
                   $CHANGES_FILE 2>&1 |  (while read -r -n 100 l; do echo $l; done)
         if [ ${PIPESTATUS[0]} != 0 ]; then
             echo "Error while importing changes, osm2pgsql ended with status ${PIPESTATUS[0]}, exiting"
             exit 1
         fi
-        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -d 10 --tile-dir $TILES_DIR
-        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
+        echo "Tiles submitted for update:"
+        cat $EXPIRE_FILE
+        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
+#        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
+#        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -t 10 --tile-dir $TILES_DIR 
         rm "$CHANGES_FILE"
         rm "$EXPIRE_FILE"
       echo 'All ok, sleeping'
