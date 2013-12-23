@@ -13,6 +13,7 @@ class uwsgi {
 
 class osm_server {
     include cgimap
+    include gpximport
     include uwsgi
     file {'/etc/uwsgi/apps-enabled/osm.ini':
         mode => 644,
