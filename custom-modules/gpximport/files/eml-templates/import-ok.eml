@@ -1,0 +1,29 @@
+From: gpx@noreply.openstreetmap.org
+To: %e
+Subject: [OpenStreetMap] GPX Import Success
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Auto-Submitted: auto-generated
+
+
+Hi,
+
+It looks like your GPX file
+
+  %t
+
+with the description
+
+  %d
+
+%T
+
+loaded successfully with %g out of a possible %p points.
+
+You can view the trace here:
+
+  %u
+
+%m
+%l
+%L
