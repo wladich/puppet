@@ -14,4 +14,8 @@ class user_w {
         source => "puppet:///files/homes/w/.gitconfig",
         require => Account['w']
     }
+
+    mail::alias {'w':
+        target => 'wladimirych@gmail.com'
+    }
 }
