@@ -14,4 +14,6 @@ class postgres_server_osm{
     package {'postgresql-contrib-9.1':
         require => Class ['Postgresql::Server']
     }
+
+    mail::alias {'postgres':}
 }

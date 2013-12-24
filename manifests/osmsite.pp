@@ -55,6 +55,8 @@ class osm_user {
         gid => 'osm',
         require => Group['osm']
     }
+
+    mail::alias {'osm':}
 }
 
 

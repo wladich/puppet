@@ -28,9 +28,6 @@ class planet_dump::account {
       auth_method => 'trust',
       order       => '003',
     }
+
+    mail::alias {'paladin':}
 }
-
-
-
-
-

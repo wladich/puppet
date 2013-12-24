@@ -37,4 +37,5 @@ class tiles::user {
         command => 'GRANT SELECT ON ALL TABLES IN SCHEMA public TO tiles;
                     ALTER DEFAULT PRIVILEGES FOR ROLE tiles GRANT SELECT ON TABLES TO tiles;'
     }
+    mail::alias {'tiles':}
 }

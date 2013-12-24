@@ -22,5 +22,5 @@ class tiles::user_replicator {
     sudo::conf { 'replicator':
         content  => "replicator ALL=(tiles) NOPASSWD: /usr/bin/render_expired",
     }
-
+    mail::alias {'replicator':}
 }
