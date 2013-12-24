@@ -1,0 +1,15 @@
+myorigin = <%= @hostname %>
+mydomain = <%= @hostname %>
+myhostname = <%= @hostname %>
+
+mydestination = localhost, localhost.localdomain, <%= @hostname %>
+always_add_missing_headers = yes
+
+mynetworks = 127.0.0.0/8
+inet_interfaces = 127.0.0.1
+
+default_transport = smtp
+relay_transport = smtp
+inet_protocols = ipv4
+
+
