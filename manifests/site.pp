@@ -25,3 +25,11 @@ firewall { '200 allow http access':
   proto  => tcp,
   action => accept,
 }
+
+class {'mail':
+    hostname => 'osm.wladich.tk'
+}
+
+mail::alias {'root':
+    target => 'wladimirych@gmail.com'
+}
