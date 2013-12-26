@@ -17,6 +17,7 @@
     <PolygonSymbolizer fill="#99eebb" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#99eebb" />
@@ -108,6 +109,7 @@
     <PolygonSymbolizer fill="#ccffaa" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#ccffaa" />
@@ -217,6 +219,7 @@
     <PolygonSymbolizer fill="#ffffbb" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#ffffbb" />
@@ -308,6 +311,7 @@
     <PolygonSymbolizer fill="#aaccaa" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#aaccaa" />
@@ -558,6 +562,7 @@
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#a75858" />
@@ -663,6 +668,7 @@
 
 <Style name="rural" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#ff7f7f" />
@@ -775,6 +781,7 @@
 
 <Style name="cottage" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#557f55" />
@@ -887,6 +894,7 @@
 
 <Style name="restricted" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#b1b1b1" />
@@ -1013,6 +1021,7 @@
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#557f55" />
@@ -1208,10 +1217,172 @@
 
 <Style name="swamp" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([swamp] = 'deep') and ([way_area] &gt; 400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 100000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([way_area] &gt; 100000) and ([swamp] = 'deep')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([swamp] = 'swamp') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([swamp] = 'swamp') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
+    <MinScaleDenominator>750000</MinScaleDenominator>
+    <Filter>([swamp] = 'swamp') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([swamp] = 'swamp') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([swamp] = 'swamp') and ([way_area] &gt; 6400000)</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([way_area] &gt; 1600000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 400000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 400000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([way_area] &gt; 400000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <Filter>([way_area] &gt; 100000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([way_area] &gt; 100000) and ([swamp] = 'swamp')</Filter>
+    <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([swamp] = 'deep')</Filter>
     <PolygonPatternSymbolizer file="images/bol_h.png" alignment="global" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([swamp] = 'swamp')</Filter>
     <PolygonPatternSymbolizer file="images/bol_l.png" alignment="global" />
   </Rule>
@@ -1225,23 +1396,6 @@
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE swamp IS NOT NULL) AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="railway" filter-mode="first">
-  <Rule>
-    <LineSymbolizer stroke="#000000" stroke-width="3.5714173228346455" />
-  </Rule>
-</Style>
-<Layer name="railway"
->
-    <StyleName>railway</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='railway') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -1622,6 +1776,23 @@
     </Datasource>
   </Layer>
 
+<Style name="railway" filter-mode="first">
+  <Rule>
+    <LineSymbolizer stroke="#000000" stroke-width="3.5714173228346455" />
+  </Rule>
+</Style>
+<Layer name="railway"
+>
+    <StyleName>railway</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE road='railway') AS t]]></Parameter>
+    </Datasource>
+  </Layer>
+
 <Style name="water-casing" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -1636,6 +1807,7 @@
     <LineSymbolizer stroke="#5066ff" stroke-width="2.4999921259842517" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <LineSymbolizer stroke="#5066ff" stroke-width="2.4999921259842517" />
@@ -1727,6 +1899,7 @@
     <PolygonSymbolizer fill="#00ffff" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>1500000</MaxScaleDenominator>
     <MinScaleDenominator>750000</MinScaleDenominator>
     <Filter>([way_area] &gt; 6400000)</Filter>
     <PolygonSymbolizer fill="#00ffff" />
@@ -1819,55 +1992,101 @@
 
 <Style name="poi" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([poi] = 'bridge') and ([drive] = 'yes')</Filter>
+    <PointSymbolizer file="images/bridge_drive.svg" allow-overlap="true" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([poi] = 'pedestrain_tunel')</Filter>
+    <PointSymbolizer file="images/pedestrain_tunel.svg" allow-overlap="true" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([poi] = 'bridge')</Filter>
+    <PointSymbolizer file="images/bridge_pedestrain.svg" allow-overlap="true" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
     <Filter>([poi] = 'mound')</Filter>
     <PointSymbolizer file="images/pupyr.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
     <Filter>([poi] = 'hunting')</Filter>
     <PointSymbolizer file="images/ohotn.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'ruins')</Filter>
     <PointSymbolizer file="images/razv.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
     <Filter>([poi] = 'spring')</Filter>
     <PointSymbolizer file="images/" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'tower')</Filter>
     <PointSymbolizer file="images/bash.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'cemetry')</Filter>
     <PointSymbolizer file="images/kladb.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'building')</Filter>
     <PointSymbolizer file="images/dom.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([poi] = 'railway_station')</Filter>
+    <PointSymbolizer file="images/zd.png" allow-overlap="true" />
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" dx="10.714251968503937" dy="10.714251968503937" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
     <Filter>([poi] = 'railway_station')</Filter>
     <PointSymbolizer file="images/zd.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>750000</MaxScaleDenominator>
     <Filter>([poi] = 'bus_stop')</Filter>
     <PointSymbolizer file="images/avt.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'church')</Filter>
     <PointSymbolizer file="images/cerkov.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'memorial')</Filter>
     <PointSymbolizer file="images/pam.png" allow-overlap="true" />
   </Rule>
   <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([poi] = 'trig')</Filter>
     <PointSymbolizer file="images/trig.png" allow-overlap="true" />
   </Rule>
   <Rule>
-    <PointSymbolizer allow-overlap="true" />
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([poi] = 'label')</Filter>
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([poi] = 'village')</Filter>
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>3000000</MaxScaleDenominator>
+    <Filter>([poi] = 'town')</Filter>
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" ><![CDATA[[name]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="poi"
@@ -1879,6 +2098,42 @@
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
        <Parameter name="table"><![CDATA[planet_osm_point]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="cottage_labels" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+</Style>
+<Layer name="cottage_labels"
+>
+    <StyleName>cottage_labels</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT ST_PointOnSurface(way) as way, name FROM planet_osm_polygon WHERE landcover='cottage') AS t]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="restricted_labels" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <TextSymbolizer face-name="Arial Regular" size="10.714251968503937" allow-overlap="true" ><![CDATA[[name]]]></TextSymbolizer>
+  </Rule>
+</Style>
+<Layer name="restricted_labels"
+>
+    <StyleName>restricted_labels</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT ST_PointOnSurface(way) as way, name FROM planet_osm_polygon WHERE landcover='restricted') AS t]]></Parameter>
     </Datasource>
   </Layer>
 
