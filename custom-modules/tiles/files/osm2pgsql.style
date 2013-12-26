@@ -11,4 +11,5 @@ node,way name text
 way river text linear
 way way_area float
 node poi text
+node drive text
 way swamp text polygon
