@@ -43,18 +43,19 @@ do
                   --expire-output "$EXPIRE_FILE" --expire-tiles 15 \
                   $CHANGES_FILE 2>&1 |  (while read -r -n 100 l; do echo $l; done)
         if [ ${PIPESTATUS[0]} != 0 ]; then
-            echo "Error while importing changes, osm2pgsql ended with status ${PIPESTATUS[0]}, exiting"
-            exit 1
+            echo "Error while importing changes, osm2pgsql ended with status ${PIPESTATUS[0]}, waiting a few minutes before retry"
+            sleep 300
+        else
+            echo "Tiles submitted for update:"
+            cat $EXPIRE_FILE
+            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
+#            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
+#            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -t 10 --tile-dir $TILES_DIR 
+            rm "$CHANGES_FILE"
+            rm "$EXPIRE_FILE"
+          echo 'All ok, sleeping'
+          sleep 30
         fi
-        echo "Tiles submitted for update:"
-        cat $EXPIRE_FILE
-        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
-#        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 --tile-dir $TILES_DIR
-#        cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -t 10 --tile-dir $TILES_DIR 
-        rm "$CHANGES_FILE"
-        rm "$EXPIRE_FILE"
-      echo 'All ok, sleeping'
-      sleep 30
     fi
 done
             
