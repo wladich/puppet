@@ -28,11 +28,11 @@ class osm_site_deps {
 class osm_site_config ($oauth_consumer_key = "") {
     file {'/home/osm/site/config/application.yml':
         content => template("application.yml.erb"),
-        notify => Service['uwsgi']
+        notify => Exec['restart osm uwsgi app'],
     }
     file {'/home/osm/site/config/database.yml':
         source => "puppet:///files/osm/database.yml",
-        notify => Service['uwsgi']
+        notify => Exec['restart osm uwsgi app'],
     }
 }
 
@@ -166,7 +166,9 @@ class osm_site ($oauth_consumer_key = "") {
         revision => 'master',
         require => Class['osm_user'],
         notify => [Class['update_pg_functions'], Class['update_gems'], Class['update_db_schema'], 
-                   Class['update_osm_assets'], Service['uwsgi']]
+                   Class['update_osm_assets'], 
+                    Exec['restart osm uwsgi app'],
+                   ]
     }
     
     class{ 'update_pg_functions':
@@ -175,23 +177,24 @@ class osm_site ($oauth_consumer_key = "") {
 
     class{ 'update_gems':
         require => Vcsrepo['osm'],
-        notify => Service['uwsgi']
+        notify => Exec['restart osm uwsgi app'],
     } 
 
     class {'osm_site_config':
         oauth_consumer_key => $oauth_consumer_key,
         require => Vcsrepo['osm'],
-        notify => Service['uwsgi']
+        notify => Exec['restart osm uwsgi app'],
     }
 
     class{ 'update_db_schema':
         require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], 
                     Class['osm_pg_db'], Class['update_gems']],
-        notify => Service['uwsgi']
+        #notify => Service['uwsgi']
+        notify => Exec['restart osm uwsgi app'],
     } 
     class {'update_osm_assets':
         require => [Vcsrepo['osm'], Class['osm_site_deps'], Class['osm_site_config'], Class['update_gems']],
-        notify => Service['uwsgi']
+         notify => Exec['restart osm uwsgi app'],
     }
 
     file { '/var/log/osm': 
