@@ -15,7 +15,7 @@ class planet_dump::dump {
     file {'/etc/cron.d/osm-planet-dump':
         require => [Class['osmosis'], File['/srv/planet/replication/minute/state.txt'], File['/var/log/planet'],
                     User['paladin']],
-        content => "* 12 * * 3 paladin nice -n 19 /usr/local/bin/planet_dump.sh >>/var/log/planet/dump.log 2>&1\n"
+        content => "17 12 * * 3 paladin nice -n 19 /usr/local/bin/planet_dump.sh >>/var/log/planet/dump.log 2>&1\n"
     }
 
 }
