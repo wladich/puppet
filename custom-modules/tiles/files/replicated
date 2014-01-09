@@ -38,7 +38,7 @@ do
         fi
         osm2pgsql --slim --append  \
                   --style /var/lib/osm_replicate/osm2pgsql.style\
-                  --cache 100  --disable-parallel-indexing --unlogged \
+                  --cache 100  --disable-parallel-indexing \
                   --cache-strategy sparse \
                   --expire-output "$EXPIRE_FILE" --expire-tiles 15 \
                   $CHANGES_FILE 2>&1 |  (while read -r -n 100 l; do echo $l; done)
