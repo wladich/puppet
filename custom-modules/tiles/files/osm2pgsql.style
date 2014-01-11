@@ -6,10 +6,18 @@ way road text linear
 way passability text linear
 way drive text linear
 
-way landcover text polygon
-node,way name text
 way river text linear
-way way_area float
+
+way landcover text polygon
+
 node poi text
-node drive text
+
+node,way name text
+
 way swamp text polygon
+
+way bridge text linear
+
+way border text linear
+
+way way_area float
