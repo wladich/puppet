@@ -2240,7 +2240,7 @@
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[ (SELECT p.way, p.name, ST_Azimuth( ST_Line_Interpolate_Point(l.way, GREATEST(ST_Line_LocatePoint(l.way, p.way) - 0.0001, 0)), ST_Line_Interpolate_Point(l.way, LEAST(ST_Line_LocatePoint(l.way, p.way) + 0.0001, 1))) / pi() * 180 AS angle from (SELECT * FROM planet_osm_point WHERE poi='pedestrain_tunel') as p LEFT JOIN (SELECT * FROM planet_osm_line WHERE road in ('highway', 'major', 'asphalt')) AS l ON ST_Intersects(p.way, l.way)) as t]]></Parameter>
+       <Parameter name="table"><![CDATA[ (SELECT p.way, p.name, ST_Azimuth( ST_Line_Interpolate_Point(l.way, GREATEST(ST_Line_Locate_Point(l.way, p.way) - 0.0001, 0)), ST_Line_Interpolate_Point(l.way, LEAST(ST_Line_Locate_Point(l.way, p.way) + 0.0001, 1))) / pi() * 180 AS angle from (SELECT * FROM planet_osm_point WHERE poi='pedestrain_tunel') as p LEFT JOIN (SELECT * FROM planet_osm_line WHERE road in ('highway', 'major', 'asphalt')) AS l ON ST_Intersects(p.way, l.way)) as t]]></Parameter>
     </Datasource>
   </Layer>
 
