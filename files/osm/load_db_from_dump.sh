@@ -13,9 +13,9 @@ if [ ! -f "$DUMP" ]; then
 fi
 
 chmod -x /usr/local/bin/osmosis
-/etc/init.d/uwsgi stop osm
-stop gpximport
-stop cgimap
+/etc/init.d/uwsgi status osm && /etc/init.d/uwsgi stop osm
+status gpximport && stop gpximport
+status cgimap && stop cgimap
 
 #su postgres -c "psql -c \"SELECT pg_terminate_backend(pg_stat_activity.procpid)
 #    FROM pg_stat_activity
