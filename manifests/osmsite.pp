@@ -77,6 +77,7 @@ class osm_pg_db {
         encoding => "UTF-8",
         locale =>  "en_US.UTF-8",
         require => Postgresql::Server::Role["osm"],
+        notify => [Exec['create pg functions'], Class['update_db_schema']]
     }
     exec {'btree extension for osm database':
         user => 'postgres',
@@ -215,4 +216,8 @@ class osm_site ($oauth_consumer_key = "") {
     }
 
    
+}
+file {'/usr/local/bin/load_db_from_dump.sh':
+    mode => 755,
+    source => "puppet:///files/osm/load_db_from_dump.sh",
 }
