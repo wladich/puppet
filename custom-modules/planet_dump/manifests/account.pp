@@ -11,13 +11,13 @@ class planet_dump::account {
       db        => 'osm',
       role      => 'paladin',
       notify    => Postgresql_psql['read permissions on db osm for user paladin'],
-      require   => Postgresql::Server::Database["osm"]
+      subscribe   => Postgresql::Server::Database["osm"]
     }
     postgresql_psql  {'read permissions on db osm for user paladin':
         refreshonly => true,
         db => 'osm',
-        command => 'GRANT SELECT ON ALL TABLES IN SCHEMA public TO paladin;
-                    ALTER DEFAULT PRIVILEGES FOR ROLE paladin GRANT SELECT ON TABLES TO paladin;'
+        command => 'GRANT SELECT ON ALL TABLES IN SCHEMA public TO paladin;',
+        subscribe   => Exec['update_db_schema']
     }
     
     postgresql::server::pg_hba_rule { 'trust access for java clients. FIXME: add password':
