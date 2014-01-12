@@ -14,10 +14,13 @@ fi
 
 chmod -x /usr/local/bin/osmosis
 /etc/init.d/uwsgi stop osm
-su postgres -c "psql -c \"SELECT pg_terminate_backend(pg_stat_activity.procpid)
-    FROM pg_stat_activity
-    WHERE pg_stat_activity.datname = 'osm'
-      AND procpid <> pg_backend_pid()\""
+stop gpximport
+stop cgimap
+
+#su postgres -c "psql -c \"SELECT pg_terminate_backend(pg_stat_activity.procpid)
+#    FROM pg_stat_activity
+#    WHERE pg_stat_activity.datname = 'osm'
+#      AND procpid <> pg_backend_pid()\""
 su postgres -c "psql -c \"DROP DATABASE IF EXISTS osm\""
 pushd /home/osm/site
 git checkout HEAD~1
