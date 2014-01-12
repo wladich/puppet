@@ -26,4 +26,10 @@ class tiles ($minute_diff_url){
         require => Class['wget']
     }
 
+    file {'/usr/local/bin/redraw_tiles.sh':
+        source => 'puppet:///modules/tiles/redraw_tiles.sh',
+        mode => 755,
+        require => Class['wget']
+    }
+  
 }
