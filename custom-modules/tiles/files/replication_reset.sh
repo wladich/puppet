@@ -35,7 +35,12 @@ mv /tmp/_replication_reset_state.txt $WORK_DIR/state.txt
 echo "Cleaning tiles cache"
 touch /var/lib/tiles/tiles/dummy
 rm -rf /var/lib/tiles/tiles/*
+
+echo "Rendering all tiles"
+start renderd
+/usr/local/bin/redraw_tiles.sh 0 15
+
 echo "Starting updater service"
 start replicated
-start renderd
+
 echo "All ok"
