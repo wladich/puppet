@@ -45,7 +45,9 @@ class cgimap {
         require => [Class['cgimap_deps'], 
                     File['/opt/cgimap/map'], 
                     File['/etc/init/cgimap.conf'], 
-                    File[ '/var/log/cgimap']]
+                    File['/var/log/cgimap'],
+                    User['osm'],
+                    Postgresql::Server::Database["osm"]]
     }
 
 }
