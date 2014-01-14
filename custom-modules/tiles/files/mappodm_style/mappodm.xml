@@ -3,395 +3,66 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#ffffff" font-directory="fonts" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
 
 
-<Style name="forest" filter-mode="first">
+<Style name="vegetation" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([landcover] = 'felling_overgrown')</Filter>
+    <PolygonSymbolizer fill="#aaccaa" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([landcover] = 'felling_overgrown')</Filter>
     <PolygonSymbolizer fill="#99eebb" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
+    <Filter>([landcover] = 'felling')</Filter>
+    <PolygonSymbolizer fill="#ffffbb" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([landcover] = 'felling')</Filter>
+    <PolygonSymbolizer fill="#99eebb" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([landcover] = 'sparse')</Filter>
+    <PolygonSymbolizer fill="#ccffaa" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>200000</MinScaleDenominator>
+    <Filter>([landcover] = 'sparse')</Filter>
+    <PolygonSymbolizer fill="#99eebb" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <Filter>([landcover] = 'forest')</Filter>
     <PolygonSymbolizer fill="#99eebb" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
+    <Filter>([landcover] = 'forest')</Filter>
     <PolygonSymbolizer fill="#99eebb" />
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#99eebb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#99eebb" />
   </Rule>
 </Style>
-<Layer name="forest"
+<Layer name="vegetation"
 >
-    <StyleName>forest</StyleName>
+    <StyleName>vegetation</StyleName>
     <Datasource>
        <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='forest') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="sparse" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <PolygonSymbolizer fill="#ccffaa" />
-  </Rule>
-</Style>
-<Layer name="sparse"
->
-    <StyleName>sparse</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='sparse') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="felling" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <PolygonSymbolizer fill="#ffffbb" />
-  </Rule>
-</Style>
-<Layer name="felling"
->
-    <StyleName>felling</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="felling_overgrown" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <PolygonSymbolizer fill="#aaccaa" />
-  </Rule>
-</Style>
-<Layer name="felling_overgrown"
->
-    <StyleName>felling_overgrown</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='felling_overgrown') AS t]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT landcover, ST_Buffer(ST_Buffer(ST_Buffer(ST_Collect(way), 0.35/1000*!scale_denominator!), -0.7/1000*!scale_denominator!), 0.5/1000*!scale_denominator!) as way FROM planet_osm_polygon WHERE landcover in ('forest', 'sparse', 'felling', 'felling_overgrown') AND way && !bbox! GROUP BY landcover) AS t1]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -555,101 +226,7 @@
 
 <Style name="urban" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#a75858" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#a75858" />
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
@@ -668,101 +245,7 @@
 
 <Style name="rural" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#ff7f7f" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#ff7f7f" />
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
@@ -781,101 +264,7 @@
 
 <Style name="cottage" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#557f55" />
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
@@ -894,101 +283,7 @@
 
 <Style name="restricted" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#b1b1b1" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#b1b1b1" />
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
@@ -1007,101 +302,7 @@
 
 <Style name="cemetry" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#557f55" />
-    <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <PolygonSymbolizer fill="#557f55" />
     <LineSymbolizer stroke="#000000" stroke-width="1.0714251968503936" stroke-gamma-method="linear" />
   </Rule>
@@ -1399,10 +600,95 @@
     </Datasource>
   </Layer>
 
+<Style name="water" filter-mode="first">
+  <Rule>
+    <PolygonSymbolizer fill="#00ffff" />
+  </Rule>
+</Style>
+<Style name="water-casing" filter-mode="first">
+  <Rule>
+    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
+  </Rule>
+</Style>
+<Layer name="water"
+>
+    <StyleName>water-casing</StyleName>
+    <StyleName>water</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT ST_Buffer(ST_Buffer(ST_Buffer(ST_Collect(way), 0.25/1000*!scale_denominator!), -0.5/1000*!scale_denominator!), 0.25/1000*!scale_denominator!) as way FROM planet_osm_polygon WHERE landcover = 'water' AND way && !bbox! AND sqrt(way_area) > 1.0*!scale_denominator!/1000.0) AS t1]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="fences-hatches" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <LineSymbolizer stroke="#000000" stroke-width="3.5714173228346455" stroke-dasharray="1.7857086614173228, 1.7857086614173228, 1.7857086614173228, 10.714251968503937" offset="-2.4999921259842517" />
+  </Rule>
+</Style>
+<Style name="fences" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'automobile')</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'pedestrain')</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
+  </Rule>
+</Style>
+<Layer name="fences"
+>
+    <StyleName>fences</StyleName>
+    <StyleName>fences-hatches</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE border='fence') AS t]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="forest_contour" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'automobile')</Filter>
+    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'pedestrain')</Filter>
+    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
+  </Rule>
+</Style>
+<Layer name="forest_contour"
+>
+    <StyleName>forest_contour</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE border='forest') AS t]]></Parameter>
+    </Datasource>
+  </Layer>
+
 <Style name="gasline" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" />
+    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" stroke-opacity="0.7" />
   </Rule>
 </Style>
 <Layer name="gasline"
@@ -1420,7 +706,7 @@
 <Style name="powerline" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" />
+    <LineSymbolizer stroke-width="2.4999921259842517" stroke="#888888" />
   </Rule>
 </Style>
 <Layer name="powerline"
@@ -1438,7 +724,7 @@
 <Style name="powerline_major" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" />
+    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" stroke-opacity="0.7" />
   </Rule>
 </Style>
 <Layer name="powerline_major"
@@ -1474,7 +760,7 @@
 <Style name="cutting-wide" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="7.142834645669291" stroke="#888888" />
+    <LineSymbolizer stroke-width="5.357125984251969" stroke="#888888" stroke-opacity="0.7" />
   </Rule>
 </Style>
 <Layer name="cutting-wide"
@@ -1606,13 +892,13 @@
 
 <Style name="advanced-roads-drive" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
     <LineSymbolizer stroke="#ffffff" stroke-width="2.857133858267717" />
   </Rule>
 </Style>
 <Style name="advanced-roads-drive-casing" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
     <LineSymbolizer stroke="#000000" stroke-width="4.2857007874015745" />
   </Rule>
 </Style>
@@ -1793,269 +1079,9 @@
     </Datasource>
   </Layer>
 
-<Style name="water" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <PolygonSymbolizer fill="#00ffff" />
-  </Rule>
-</Style>
-<Style name="water-casing" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>1500000</MaxScaleDenominator>
-    <MinScaleDenominator>750000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 6400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 1600000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>200000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 400000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
-    <MinScaleDenominator>100000</MinScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([way_area] &gt; 100000)</Filter>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <LineSymbolizer stroke="#5066ff" stroke-width="3.5714173228346455" />
-  </Rule>
-</Style>
-<Layer name="water"
->
-    <StyleName>water-casing</StyleName>
-    <StyleName>water</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Layer name="water-border"
->
-    
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT (ST_Dump(ST_Union(way))).geom as way FROM planet_osm_polygon WHERE landcover='water') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="fences-hatches" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <LineSymbolizer stroke="#000000" stroke-width="3.5714173228346455" stroke-dasharray="1.7857086614173228, 1.7857086614173228, 1.7857086614173228, 10.714251968503937" offset="-2.4999921259842517" />
-  </Rule>
-</Style>
-<Style name="fences" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([bridge] = 'automobile')</Filter>
-    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([bridge] = 'pedestrain')</Filter>
-    <LineSymbolizer stroke="#000000" stroke-width="1.7857086614173228" />
-  </Rule>
-</Style>
-<Layer name="fences"
->
-    <StyleName>fences</StyleName>
-    <StyleName>fences-hatches</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE border='fence') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
-<Style name="forest_contour" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([bridge] = 'automobile')</Filter>
-    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>100000</MaxScaleDenominator>
-    <Filter>([bridge] = 'pedestrain')</Filter>
-    <LineSymbolizer stroke="#008f00" stroke-width="2.4999921259842517" stroke-dasharray="2.4999921259842517, 3.5714173228346455" />
-  </Rule>
-</Style>
-<Layer name="forest_contour"
->
-    <StyleName>forest_contour</StyleName>
-    <Datasource>
-       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[tiles]]></Parameter>
-       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM planet_osm_line WHERE border='forest') AS t]]></Parameter>
-    </Datasource>
-  </Layer>
-
 <Style name="bridges-inner" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([bridge] = 'automobile')</Filter>
     <LineSymbolizer stroke="#ffffff" stroke-width="5.714267716535434" />
   </Rule>
@@ -2067,7 +1093,7 @@
 </Style>
 <Style name="bridges-casing" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([bridge] = 'automobile')</Filter>
     <LineSymbolizer stroke="#000000" stroke-width="8.571401574803149" />
   </Rule>
@@ -2086,13 +1112,13 @@
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT way, bridge, ST_Length(ST_MakeLine(ST_StartPoint(way), ST_EndPoint(way))) as length FROM planet_osm_line WHERE bridge IS NOT NULL) AS t]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT way, bridge FROM planet_osm_line WHERE bridge IS NOT NULL AND ST_Length(way) / !scale_denominator! > 4./1000) AS t]]></Parameter>
     </Datasource>
   </Layer>
 
 <Style name="bridge-ends" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>200000</MaxScaleDenominator>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
     <Filter>([bridge] = 'automobile')</Filter>
     <PointSymbolizer file="images/bridge_automobile_end.svg" transform="rotate([angle],0,0)" allow-overlap="true" />
   </Rule>
@@ -2110,7 +1136,31 @@
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="user"><![CDATA[tiles]]></Parameter>
        <Parameter name="dbname"><![CDATA[gis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT ends.end as way, ST_Azimuth(ends.dir, ends.end) / pi() * 180  as angle, bridge FROM (SELECT way, ST_StartPoint(way) as end, bridge, ST_PointN(way, 2) as dir FROM planet_osm_line WHERE bridge IS NOT NULL UNION SELECT way, ST_EndPoint(way) as end, bridge, ST_PointN(way, ST_NPoints(way) - 1) as dir FROM planet_osm_line WHERE bridge IS NOT NULL) AS ends) AS t]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT ends.end as way, ST_Azimuth(ends.dir, ends.end) / pi() * 180  as angle, bridge FROM (SELECT ST_StartPoint(way) as end, bridge, ST_PointN(way, 2) as dir FROM planet_osm_line WHERE bridge IS NOT NULL AND ST_Length(way) / !scale_denominator! > 4./1000 UNION SELECT ST_EndPoint(way) as end, bridge, ST_PointN(way, ST_NPoints(way) - 1) as dir FROM planet_osm_line WHERE bridge IS NOT NULL AND ST_Length(way) / !scale_denominator! > 4./1000 ) AS ends ) AS t]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="short_bridges" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'automobile')</Filter>
+    <PointSymbolizer file="images/bridge_automobile.svg" transform="rotate([angle]+90,0,0)" allow-overlap="true" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <Filter>([bridge] = 'pedestrain')</Filter>
+    <PointSymbolizer file="images/bridge_pedestrain.svg" transform="rotate([angle]+90,0,0)" allow-overlap="true" />
+  </Rule>
+</Style>
+<Layer name="short_bridges"
+>
+    <StyleName>short_bridges</StyleName>
+    <Datasource>
+       <Parameter name="persist_connection"><![CDATA[false]]></Parameter>
+       <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="user"><![CDATA[tiles]]></Parameter>
+       <Parameter name="dbname"><![CDATA[gis]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT ST_Line_Interpolate_Point(way, 0.5) as way, bridge, ST_Azimuth(ST_StartPoint(way), ST_EndPoint(way)) / pi() * 180  as angle FROM planet_osm_line WHERE bridge IS NOT NULL AND ST_Length(way) / !scale_denominator! <= 4./1000 ) as t]]></Parameter>
     </Datasource>
   </Layer>
 
