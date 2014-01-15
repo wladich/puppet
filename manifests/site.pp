@@ -4,7 +4,12 @@ import 'utilities.pp'
 import 'osmsite.pp'
 import 'osmserver.pp'
 
-include swapfile
+#include swapfile
+class {'swapfile':
+	swapsize => 2048,
+	ensure => present
+}
+
 include user_w
 
 
