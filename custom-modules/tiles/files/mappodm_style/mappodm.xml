@@ -98,7 +98,7 @@
 
 <Style name="contours-general" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>750000</MaxScaleDenominator>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
     <MinScaleDenominator>100000</MinScaleDenominator>
     <LineSymbolizer stroke="#bf6100" smooth="0.5" stroke-width="1.0714251968503936" />
   </Rule>
@@ -738,13 +738,13 @@
 
 <Style name="advanced-roads-drive" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
     <LineSymbolizer stroke="#ffffff" stroke-width="2.857133858267717" />
   </Rule>
 </Style>
 <Style name="advanced-roads-drive-casing" filter-mode="first">
   <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MaxScaleDenominator>200000</MaxScaleDenominator>
     <LineSymbolizer stroke="#000000" stroke-width="4.2857007874015745" />
   </Rule>
 </Style>
