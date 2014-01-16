@@ -134,6 +134,7 @@ class update_osm_assets {
     include zip
     exec {'build patches':
         command => "/home/osm/site/patch/potlatch2/build.sh",
+        user => 'osm',
         refreshonly => true,
         require => Class['zip']
     }
@@ -149,6 +150,7 @@ class update_osm_assets {
         cwd => "/home/osm/site",
         refreshonly => true,
         command => "/usr/local/bin/bundle exec rake assets:precompile",
+        user => 'osm',
         require => [Exec['cleanup compiled assets'], Exec['build patches']]
     }    
 }
@@ -213,6 +215,20 @@ class osm_site ($oauth_consumer_key = "") {
         mode => 750,
         require => Class['osm_user'],
         before => Vcsrepo['osm']
+    }
+    file { '/home/osm/traces': 
+        ensure => 'directory',
+        owner => 'osm',
+        group => 'osm',
+        mode => 750,
+        require => Class['osm_user'],
+    }
+    file { '/home/osm/images': 
+        ensure => 'directory',
+        owner => 'osm',
+        group => 'osm',
+        mode => 770,
+        require => Class['osm_user'],
     }
 
    
