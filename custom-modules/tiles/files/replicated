@@ -33,7 +33,7 @@ do
         if [ -e "$EXPIRE_FILE" ]; then 
             echo "Found old tile expire file, applying it"
 #            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
-            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 0 --tile-dir $TILES_DIR
+            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 --tile-dir $TILES_DIR
 #            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -t --tile-dir $TILES_DIR
         fi
         osm2pgsql --slim --append  \
@@ -49,7 +49,7 @@ do
             echo "Tiles submitted for update:"
             cat $EXPIRE_FILE
 #            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -d 10 --tile-dir $TILES_DIR
-            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 0 --tile-dir $TILES_DIR
+            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 --tile-dir $TILES_DIR
 #            cat "$EXPIRE_FILE" | sudo -u tiles /usr/bin/render_expired -z 10 -Z 15 -t 10 --tile-dir $TILES_DIR 
             rm "$CHANGES_FILE"
             rm "$EXPIRE_FILE"
