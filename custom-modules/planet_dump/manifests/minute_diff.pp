@@ -16,6 +16,7 @@ class planet_dump::minute_diff {
     file { '/srv/planet/replication/minute/state.txt':
         replace => no,
         owner => 'paladin',
+        group => 'nogroup',
         mode => 644,
         source => 'puppet:///modules/planet_dump/state.txt.bootstrap'
     }
